@@ -1,27 +1,56 @@
+import CartWidget from "./CartWidget"
+
+
+
 function NavBar() {
     return (
-        <div classnameName='App'>
-        <nav classname="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
-          <div classname="container">
-            <a classname="navbar-brand" href="#"><u>Local Genérico</u></a>
-            <button classname="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-              <span classname="navbar-toggler-icon"></span>
-            </button>
-            <div classname="collapse navbar-collapse" id="navbarsExample07">
-              <ul classname="navbar-nav me-auto mb-2 mb-lg-0">
-                <li classname="nav-item">
-                  <a classname="nav-link active" aria-current="page" href="#">Remeras</a>
-                </li>
-                <li classname="nav-item">
-                  <a classname="nav-link active" href="#">Pantalones</a>
-                </li>
-                <li classname="nav-item">
-                  <a classname="nav-link disabled">Calza2</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+
+
+    <div className='App'>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+    <div className="container-fluid">
+      <a className="navbar-brand" href="#">Local Genérico</a>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="true" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className="navbar-collapse collapse show" id="navbarsExample05">
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+            <a className="nav-link" href="#">Link</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">Link</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">Link</a>
+          </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+            <ul className="dropdown-menu" aria-labelledby="dropdown05">
+              <li><a className="dropdown-item" href="#">Action</a></li>
+              <li><a className="dropdown-item" href="#">Another action</a></li>
+              <li><a className="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <CartWidget/>
+        <form>
+          <input className="form-control" type="text" placeholder="Search" aria-label="Search"/>
+          </form>
+      </div>
+    </div>
+  </nav>
+          
+
+
+
+
+
+
+
+
+
       </div>
     );
   }
