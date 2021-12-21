@@ -17,22 +17,26 @@ function NavBar() {
       <div className="navbar-collapse collapse show" id="navbarsExample05">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <a className="nav-link" href="#">Remeruskis</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <a className="nav-link" href="#">Pantalones</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <a className="nav-link" href="#">Calza2</a>
           </li>
-          <li className="nav-item dropdown">
+
+
+          {/* <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
             <ul className="dropdown-menu" aria-labelledby="dropdown05">
               <li><a className="dropdown-item" href="#">Action</a></li>
               <li><a className="dropdown-item" href="#">Another action</a></li>
               <li><a className="dropdown-item" href="#">Something else here</a></li>
             </ul>
-          </li>
+          </li> */}
+
+          
         </ul>
         <CartWidget/>
         <form>
