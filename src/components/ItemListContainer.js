@@ -1,5 +1,5 @@
 import { Card } from "react-bootstrap";
-import Venta from "./Venta";
+import ItemCount from "./ItemCount";
 
 function ItemListContainer(){
 
@@ -12,7 +12,7 @@ function ItemListContainer(){
             <Card.Text>
                 Acá iría una foto de una remera piola que encontré en google pero no se como agregarla y me frustré buscando así que queda éste texto.
             </Card.Text>
-            <Venta/>
+            <ItemCount/>
         </Card.Body>
         </Card>
 
@@ -23,7 +23,7 @@ function ItemListContainer(){
             <Card.Text>
                 Acá iría una foto de un pantalón piola que encontré en google pero no se como agregarlo y me frustré buscando así que queda éste texto.
             </Card.Text>
-            <Venta/>
+            <ItemCount/>
         </Card.Body>
         </Card>
     </div>

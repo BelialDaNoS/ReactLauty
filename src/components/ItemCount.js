@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 
-function Venta() {
+function ItemCount() {
   const [cantidad, setCount] = useState(0);
 
   return (
@@ -34,6 +34,6 @@ function Venta() {
   );
 }
 
-export default Venta;
+export default ItemCount;
 
 
