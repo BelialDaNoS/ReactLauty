@@ -1,10 +1,13 @@
 const carro = require("./carro.png");
 
-const CartWidget = () => {
+const CartWidget = ({compra}) => {
+
   return (
-    <div>
-        <img src={carro}/>
-    </div>
+
+        <div className="d-flex justify-content-end">
+          <h4 className="row text-white">{compra}</h4>
+          <img src={carro} className="row"/>
+        </div>
   )
 }
 
