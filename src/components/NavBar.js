@@ -2,7 +2,7 @@ import CartWidget from "./CartWidget"
 import { Navbar } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
-
+import {cantidad} from "./ItemCount"
 
 function NavBar() {
     return (
