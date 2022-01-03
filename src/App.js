@@ -9,14 +9,13 @@ function App(){
       stock : 10}
       
   const tazyanne={
-      title:"tazyanne",
+      title:"Tazyanne",
       stock: 1};  
-
 
   return( 
     <div className="App">
       <NavBar/>
-      <ItemListContainer remera={remera} tazyanne={tazyanne} />
+      <ItemListContainer />
     </div>
   );
 }
