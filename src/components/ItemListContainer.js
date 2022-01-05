@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import ItemList from "./ItemList"
 import { Row } from "react-bootstrap";
+import {Container} from "react-bootstrap";
+import {Col} from "react-bootstrap";
 
 let obj = [
     {   
@@ -39,7 +41,7 @@ let obj = [
     {   
         "id": 5,
         "stock":7, 
-        "nombre":"Remera bastante mas grande", 
+        "nombre":"Remera muy grande", 
         "Talle":"XL",  
         "precio":800,
         "img":"/remera.jpg"
@@ -49,31 +51,45 @@ let obj = [
 
 const ItemListContainer = () => {
 
-    let [catalogo, setCatalogo] = useState([])
-    const { id } = useParams()
+    const [catalogo, setCatalogo] = useState([]);
+
+    const [loading, setLoading] = useState(false)
+
+    const { id } = useParams();
         
     useEffect(() => {
-       const promesa = new Promise((res, rej) => {
+       const promise = new Promise((res, rej) => {
             setTimeout(() => {
                 res(obj)
             }, 2000)
         })
 
-        promesa
-            .then((catalogo) => {
-                console.log("Bien")
-                setCatalogo(obj)
+        promise
+            .then((obj) => {
+                console.log("Bien");
+                setCatalogo(obj);
+                setLoading(true)
             })
             .catch(() => {
-                console.log("Bien't")
+                console.error("Bien't")
             })
     }, [id])
 
-    return (
-        <Row> 
-            <ItemList catalogo={catalogo} />
-        </Row>
-    )
+    if(!loading){
+        return (
+            <Container fluid>
+            <Row className="justify-content-md-center">
+                <img src="/loadgif.gif" alt="" style={{width:'500px', height:'500px'}}/>
+            </Row>
+            </Container>
+        )
+    }else{
+        return (
+            <Row> 
+                <ItemList catalogo={catalogo} />
+            </Row>
+        )
+    }
 }
   
   export default ItemListContainer;

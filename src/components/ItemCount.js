@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 function ItemCount({stock}) {
   const [cantidad, setCount] = useState(0);
@@ -21,23 +22,25 @@ function ItemCount({stock}) {
 
 
   return (
-  <Container>
-    <Row>
-      <Col>
-        <button onClick={() => restar()}>
-          -
-        </button>
-      </Col>
-      <Col>
-        <p>{cantidad}</p>
-      </Col>
-      <Col>
-        <button onClick={() => sumar()}>
-          +
-        </button>
-      </Col>
-    </Row>
-  </Container>
+
+    <Container>
+      <Row>
+        <Col>
+          <Button variant="danger" onClick={() => restar()}>
+            -
+          </Button>
+        </Col>
+        <Col>
+          <p>{cantidad}</p>
+        </Col>
+        <Col>
+          <Button onClick={() => sumar()} variant="success">
+            +
+          </Button>
+        </Col>
+      </Row>
+    </Container>
+
   );
 }
 
