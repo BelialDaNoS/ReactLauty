@@ -51,8 +51,7 @@ const ItemListContainer = () => {
 
     let [catalogo, setCatalogo] = useState([])
     const { id } = useParams()
-
-    
+        
     useEffect(() => {
        const promesa = new Promise((res, rej) => {
             setTimeout(() => {
