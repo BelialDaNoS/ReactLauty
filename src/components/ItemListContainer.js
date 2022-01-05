@@ -1,9 +1,7 @@
-import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import ItemList from "./ItemList"
 import { Row } from "react-bootstrap";
 import {Container} from "react-bootstrap";
-import {Col} from "react-bootstrap";
 
 let obj = [
     {   
@@ -54,8 +52,6 @@ const ItemListContainer = () => {
     const [catalogo, setCatalogo] = useState([]);
 
     const [loading, setLoading] = useState(false)
-
-    const { id } = useParams();
         
     useEffect(() => {
        const promise = new Promise((res, rej) => {
@@ -73,7 +69,7 @@ const ItemListContainer = () => {
             .catch(() => {
                 console.error("Bien't")
             })
-    }, [id])
+    }, [])
 
     if(!loading){
         return (
@@ -93,4 +89,3 @@ const ItemListContainer = () => {
 }
   
   export default ItemListContainer;
-  
