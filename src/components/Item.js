@@ -2,14 +2,14 @@ import ItemCount from "./ItemCount";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Row } from "react-bootstrap";
-import { Modal } from "react-bootstrap";
 import { useState, useEffect } from "react"
 // import {Link} from "react-router-dom";
 
 function Item({cat}){
+
+    const handleShow = () => setShow(true);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return(
             <Card style={{ width: '18rem', margin: '30px' }}>
@@ -21,22 +21,12 @@ function Item({cat}){
                 </Card.Text>
                 
                 <ItemCount stock={cat.stock}/>
-
                     <Row className="justify-content-center">
+
                         <Button onClick={handleShow}>Detalles</Button >
-                        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
-                            <Modal.Header closeButton> 
-                                <Modal.Title>Título de la prenda</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                Detalles del producto
-                                </Modal.Body>
-                            <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose}>
-                                    Cerrar
-                                </Button>
-                            </Modal.Footer>
-                        </Modal>
+                        {/* Acá se enlaza con el itemldetailcontainer */}
+
+                        
                     </Row>
 
                 {/* <Link to={`/cat/${cat.id}`}>Detalles</Link> */}
