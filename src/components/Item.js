@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { useState, useEffect } from "react"
+import ItemDetailContainer from "./ItemDetailContainer"
 // import {Link} from "react-router-dom";
 
 function Item({cat}){
@@ -23,7 +24,9 @@ function Item({cat}){
                 <ItemCount stock={cat.stock}/>
                     <Row className="justify-content-center">
 
-                        <Button onClick={handleShow}>Detalles</Button >
+                        <ItemDetailContainer/>
+                        {/* <Button onClick={handleShow}>Detalles</Button > */}
+
                         {/* Acá se enlaza con el itemldetailcontainer */}
 
                         

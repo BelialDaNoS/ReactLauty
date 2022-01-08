@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import ItemDetail from "./ItemDetail"
 import { Row } from "react-bootstrap";
-import {Container} from "react-bootstrap";
 import { useParams } from "react-router-dom"
 
 const id = 4;
@@ -53,7 +52,7 @@ let obj = [
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState([]);
 
-    const { id } = useParams()
+    // const { id } = useParams()
 
     const [catalogo, setCatalogo] = useState([]);
 
@@ -86,21 +85,12 @@ const ItemDetailContainer = () => {
             .finally(() => setLoading(true))
     }, [id])
 
-    if(!loading){
-        return (
-            <Container fluid>
-            <Row className="justify-content-md-center">
-                <img src="/loadgif.gif" alt="" style={{width:'500px', height:'500px'}}/>
-            </Row>
-            </Container>
-        )
-    }else{
         return (
             <Row> 
                 <ItemDetail product={product} />
             </Row>
         )
-    }
+    
 }
   
   export default ItemDetailContainer;
