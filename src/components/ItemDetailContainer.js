@@ -69,13 +69,12 @@ const ItemDetailContainer = () => {
             setTimeout(() => {
                 res(obj)
             }, 2000)
-        })
+        },[])
 
 
 
         promise
             .then((res) => {
-                console.log("Bien");
                 setCatalogo(obj);
                 setProduct(res.find(product => product.id === id))
             })

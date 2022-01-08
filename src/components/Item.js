@@ -23,13 +23,7 @@ function Item({cat}){
                 
                 <ItemCount stock={cat.stock}/>
                     <Row className="justify-content-center">
-
                         <ItemDetailContainer/>
-                        {/* <Button onClick={handleShow}>Detalles</Button > */}
-
-                        {/* Acá se enlaza con el itemldetailcontainer */}
-
-                        
                     </Row>
 
                 {/* <Link to={`/cat/${cat.id}`}>Detalles</Link> */}
