@@ -2,12 +2,10 @@ import Item from "./Item";
 import { Row } from "react-bootstrap";
 
 
-    const ItemDetail = ({catalogo}) => {
+    const ItemDetail = ({product}) => {
         return (
             <Row>
-                {catalogo.map((item,index)=>
                 <Item key={index} cat={item}/>
-                )}
             </Row>
         )
     }

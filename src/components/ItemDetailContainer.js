@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import ItemDetail from "./ItemDetail"
 import { Row } from "react-bootstrap";
 import {Container} from "react-bootstrap";
+import { useParams } from "react-router-dom"
 
 const id = 4;
 
@@ -50,28 +51,39 @@ let obj = [
 
 
 const ItemDetailContainer = () => {
+    const [product, setProduct] = useState([]);
+
+    const { id } = useParams()
 
     const [catalogo, setCatalogo] = useState([]);
 
     const [loading, setLoading] = useState(false)
+
+
         
     useEffect(() => {
+
+        if(id){
+            const productDetail = obj.find(e => e.id === parseInt(id))}
+
        const promise = new Promise((res, rej) => {
             setTimeout(() => {
                 res(obj)
             }, 2000)
         })
 
+
+
         promise
             .then((res) => {
                 console.log("Bien");
                 setCatalogo(obj);
-                setLoading(true)
                 setProduct(res.find(product => product.id === id))
             })
-            .catch(() => {
+            .catch((rej) => {
                 console.error("Bien't")
             })
+            .finally(() => setLoading(true))
     }, [id])
 
     if(!loading){
@@ -85,7 +97,7 @@ const ItemDetailContainer = () => {
     }else{
         return (
             <Row> 
-                <ItemDetail catalogo={catalogo} />
+                <ItemDetail product={product} />
             </Row>
         )
     }
