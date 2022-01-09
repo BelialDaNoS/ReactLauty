@@ -3,72 +3,28 @@ import ItemList from "./ItemList"
 import { Row } from "react-bootstrap";
 import {Container} from "react-bootstrap";
 
-let obj = [
-    {   
-        "id": 1,
-        "stock":20,
-        "nombre":"Remera pa muy niño",
-        "Talle":"XS",  
-        "precio":400,
-        "img":"/remera.jpg"
-    },
-    {  
-        "id": 2,
-        "stock":10,
-        "nombre":"Remera pa niño",
-        "Talle":"S",  
-        "precio":500,
-        "img":"/remera.jpg"
-    },
-    {   
-        "id": 3,
-        "stock":0, 
-        "nombre":"Remera", 
-        "Talle":"M",  
-        "precio":600,
-        "img":"/remera.jpg"
-    },
-    {   
-        "id": 4,
-        "stock":15, 
-        "nombre":"Remera mas grande", 
-        "Talle":"L",  
-        "precio":700,
-        "img":"/remera.jpg"
-    },
-    {   
-        "id": 5,
-        "stock":7, 
-        "nombre":"Remera muy grande", 
-        "Talle":"XL",  
-        "precio":800,
-        "img":"/remera.jpg"
-    },
-] 
-
 
 const ItemListContainer = () => {
 
     const [catalogo, setCatalogo] = useState([]);
 
     const [loading, setLoading] = useState(false)
-        
+
     useEffect(() => {
-       const promise = new Promise((res, rej) => {
-            setTimeout(() => {
-                res(obj)
-            }, 2000)
-        })
+
+        const promise = fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=200');
 
         promise
-            .then((obj) => {
-                console.log("Bien");
-                setCatalogo(obj);
-                setLoading(true)
+            .then((res) => res.json())
+            .then((res)=>{
+                setCatalogo(res.results);
+                console.log("Tojoya")
+                console.log(catalogo)
             })
             .catch(() => {
                 console.error("Bien't")
             })
+            .finally(() => setLoading(true))
     }, [])
 
     if(!loading){

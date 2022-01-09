@@ -8,12 +8,13 @@ function App(){
   return( 
     <div className="App">
       <NavBar/>
-      <BrowserRouter>
+      <ItemListContainer/> 
+
+      {/* <BrowserRouter>
         <Routes>
-          <Route path='/'element={<ItemListContainer/>} />
           <Route path='/item'element={<ItemDetailContainer/>} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }
