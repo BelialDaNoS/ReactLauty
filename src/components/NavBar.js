@@ -6,7 +6,7 @@ function NavBar() {
     return (
       <Navbar variant="dark" bg="dark" expand="sm">
       <Container fluid>
-      <Navbar.Brand href="#home"><h3>PokeCoder</h3></Navbar.Brand>
+      <Navbar.Brand href="/"><h3>PokeCoder</h3></Navbar.Brand>
       <Navbar.Toggle aria-controls="navbar-dark-example" />
       <Navbar.Collapse id="navbar-dark-example">
         <Nav>

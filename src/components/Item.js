@@ -29,7 +29,7 @@ function Item({cat}){
     return(
             <Card style={{ width: '18rem', margin: '30px' }}>
             <Card.Body>
-                <Card.Title> {cat.name} </Card.Title>
+                <Card.Title style={{textTransform:"capitalize"}}> {cat.name} </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted"> id: {pokeinfo} </Card.Subtitle>
                 <Card.Text>
                     <img src={pokeimg.front_default} style={{width:'200px', height:'200px'}}/>
