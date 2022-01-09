@@ -1,13 +1,17 @@
-import { Card, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 const Types = ({type}) =>{
-    console.log("hola")
+    console.log(type)
     return (
-        <Row>
-        {/* {type.map((item)=>
-            <h2>{item.type.name}</h2>
-        )} */}
-        </Row>
+
+        <div>
+            {type.map((item,index)=>
+                <Row key={index}>
+                <h2>{item.type.name}</h2>
+                </Row>
+            )}
+        </div>
+
     )
 }
   export default Types;

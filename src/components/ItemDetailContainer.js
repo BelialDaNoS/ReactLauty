@@ -3,7 +3,7 @@ import ItemDetail from "./ItemDetail"
 import { Row } from "react-bootstrap";
 import { useParams } from "react-router-dom"
 
-const id = 9;
+const id = 12;
 
 
 const ItemDetailContainer = () => {

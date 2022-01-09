@@ -42,7 +42,6 @@ function NavBar() {
             <NavDropdown.Item href="/">Desconocido</NavDropdown.Item>
             <NavDropdown.Item href="/">Sombra</NavDropdown.Item>
         </NavDropdown>
-
         </Nav>
         <form>
           <input className="form-control" type="text" placeholder="Search" aria-label="Search"/>
