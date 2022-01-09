@@ -3,42 +3,32 @@ import ItemDetail from "./ItemDetail"
 import { Row } from "react-bootstrap";
 import { useParams } from "react-router-dom"
 
-const id = 4;
+const id = 1;
 
 
 const ItemDetailContainer = () => {
 
+        // const { id } = useParams()
+
     const [product, setProduct] = useState([]);
 
-    // const { id } = useParams()
-
     const [catalogo, setCatalogo] = useState([]);
-
-    const [loading, setLoading] = useState(false)
 
 
         
     useEffect(() => {
 
-
-        const URL = ['https://pokeapi.co/api/v2/'];
+        const URL = `https://pokeapi.co/api/v2/pokemon/${id}`
+        const detalles = fetch(URL);
     
-        const getcollection = fetch(URL);
 
-        if(id){
-            const productDetail = URL.find(e => e.id === parseInt(id))}
-
-
-
-        getcollection
-            .then((res) =>  res.json())
-            .then((res) => {
-                setCatalogo(URL);
-                setProduct(res.find(product => product.id === id))
+        detalles
+            .then((res) => res.json())
+            .then((res)=>{
+                setProduct(res);
+                console.log(product)
             })
-            .catch((rej) => {
-                console.error("Bien't")
-            })
+            .catch(() => {console.error("Pokeinfo Mal")})
     }, [id])
 
         return (

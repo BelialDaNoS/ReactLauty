@@ -3,18 +3,11 @@ import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { useState, useEffect } from "react"
-import ItemDetailContainer from "./ItemDetailContainer"
 // import {Link} from "react-router-dom";
 
-function Item({cat,img}){
+function Item({cat}){
     const [pokeimg, setPokeimg] = useState([]);
     const [pokeinfo, setPokeinfo] = useState([]);
-
-
-    const handleShow = () => setShow(true);
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-
 
     useEffect(() => {
 
@@ -44,7 +37,7 @@ function Item({cat,img}){
                 
                 <ItemCount stock={pokeinfo}/>
                     <Row className="justify-content-center">
-                        <Button onClick={handleShow}>Detalles</Button>
+                        <Button href="/item">Detalles</Button>
                     </Row>
                 {/* <Link to={`/cat/${cat.id}`}>Detalles</Link> */}
             </Card.Body>

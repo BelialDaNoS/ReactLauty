@@ -19,7 +19,6 @@ const ItemListContainer = () => {
             .then((res)=>{
                 setCatalogo(res.results);
                 console.log("Tojoya")
-                console.log(catalogo)
             })
             .catch(() => {
                 console.error("Bien't")
