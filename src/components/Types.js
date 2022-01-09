@@ -5,11 +5,11 @@ const Types = ({type}) =>{
     return (
 
         <div>
-            {type.map((item,index)=>
+            {/* {type.map((item,index)=>
                 <Row key={index}>
                 <h2>{item.type.name}</h2>
                 </Row>
-            )}
+            )} */}
         </div>
 
     )
