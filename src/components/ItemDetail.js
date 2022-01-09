@@ -6,7 +6,7 @@ const ItemDetail = ({product, pokeimg}) => {
 const pokenombre = product.name;
 
 const typee = product.types;
-
+console.log("Doble")
     return (
         
         <Container>
@@ -21,7 +21,6 @@ const typee = product.types;
         <Card.Footer className="text-muted"></Card.Footer>
         </Card>
         </Container>
-
         )
     }
 export default ItemDetail

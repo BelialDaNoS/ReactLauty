@@ -21,7 +21,6 @@ const ItemDetailContainer = () => {
         
 
         const detalles = fetch(URL);
-    
 
         detalles
             .then((res) => res.json())
