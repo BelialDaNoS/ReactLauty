@@ -1,17 +1,19 @@
 import { Row } from "react-bootstrap";
 
 const Types = ({type}) =>{
-    console.log(type)
-    return (
 
+    console.log(type)
+
+    if(type){
+    return (
         <div>
-            {/* {type.map((item,index)=>
+            {type.map((item,index)=>
                 <Row key={index}>
-                <h2>{item.type.name}</h2>
+                <h3 style={{textTransform:"capitalize"}}>{item.type.name}</h3>
                 </Row>
-            )} */}
+            )} 
         </div>
 
-    )
+    )}else{return(<div>Cargando</div>)}
 }
   export default Types;

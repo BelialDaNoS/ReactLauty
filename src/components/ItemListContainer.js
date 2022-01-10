@@ -12,7 +12,7 @@ const ItemListContainer = () => {
 
     useEffect(() => {
 
-        const promise = fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=200');
+        const promise = fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000');
 
         promise
             .then((res) => res.json())

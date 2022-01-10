@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react"
 import ItemDetail from "./ItemDetail"
-import { Row } from "react-bootstrap";
 import { useParams } from "react-router-dom"
-
-const id = 12;
+const id = 703;
 
 
 const ItemDetailContainer = () => {
@@ -18,7 +16,6 @@ const ItemDetailContainer = () => {
     useEffect(() => {
 
         const URL = `https://pokeapi.co/api/v2/pokemon/${id}`;
-        
 
         const detalles = fetch(URL);
 
@@ -32,9 +29,8 @@ const ItemDetailContainer = () => {
     }, [id])
 
         return (
-            <Row> 
                 <ItemDetail product={product} pokeimg={pokeimg} />
-            </Row>
+
         )
     
 }
