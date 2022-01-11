@@ -22,7 +22,6 @@ function ItemCount({stock}) {
 
 
   return (
-
     <Container>
       <Row>
         <Col>
