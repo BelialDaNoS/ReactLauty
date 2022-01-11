@@ -33,10 +33,9 @@ function Item({cat}){
                 <Card.Text>
                     <img src={pokeimg.front_default} style={{width:'200px', height:'200px'}}/>
                 </Card.Text>
-                
                 <ItemCount stock={pokeinfo}/>
                     <Row className="justify-content-center">
-                        <Link className="btn btn-primary" to={`item/${pokeinfo}`}>Detalles</Link>
+                        <Link className="btn btn-primary" to={`/item/${pokeinfo}`}>Detalles</Link>
                     </Row>
             </Card.Body>
             </Card>

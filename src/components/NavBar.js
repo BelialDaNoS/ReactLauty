@@ -36,8 +36,7 @@ function NavBar() {
         <NavDropdown
           id="nav-dropdown-dark-example"
           title="Tipos"
-          menuVariant="dark"
-        >
+          menuVariant="dark">
           <DropdownTipos categorias={categorias.results}/>
         </NavDropdown>
         </Nav>
