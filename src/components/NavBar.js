@@ -1,8 +1,31 @@
 import CartWidget from "./CartWidget"
 import { Container, Nav,Navbar, NavDropdown } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import DropdownTipos from "./DropdownTipos";
 
 
 function NavBar() {
+
+
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+
+    
+    const tipos = fetch('https://pokeapi.co/api/v2/type');
+
+    tipos
+        .then((res) => res.json())
+        .then((res)=>{
+            setCategorias(res);
+            console.log("Tojoya Navbar")
+        })
+        .catch(() => {
+            console.error("Bien't")
+        })
+}, [])
+
+
     return (
       <Navbar variant="dark" bg="dark" expand="sm">
       <Container fluid>
@@ -10,37 +33,12 @@ function NavBar() {
       <Navbar.Toggle aria-controls="navbar-dark-example" />
       <Navbar.Collapse id="navbar-dark-example">
         <Nav>
-          <Nav.Item>
-            <Nav.Link href="/">Normales</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/">Fuego</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/">Tierra</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/">Agua</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/">Volador</Nav.Link>
-          </Nav.Item>
-          <NavDropdown title="Otros Tipos" id="nav-dropdown">
-            <NavDropdown.Item href="/">Peleador</NavDropdown.Item>
-            <NavDropdown.Item href="/">Veneno</NavDropdown.Item>
-            <NavDropdown.Item href="/">Planta</NavDropdown.Item>
-            <NavDropdown.Item href="/">Piedra</NavDropdown.Item>
-            <NavDropdown.Item href="/">Bicho</NavDropdown.Item>
-            <NavDropdown.Item href="/">Fantasma</NavDropdown.Item>
-            <NavDropdown.Item href="/">Acero</NavDropdown.Item>
-            <NavDropdown.Item href="/">Electrico</NavDropdown.Item>
-            <NavDropdown.Item href="/">Psíquico</NavDropdown.Item>
-            <NavDropdown.Item href="/">Hielo</NavDropdown.Item>
-            <NavDropdown.Item href="/">Dragon</NavDropdown.Item>
-            <NavDropdown.Item href="/">Oscuridad</NavDropdown.Item>
-            <NavDropdown.Item href="/">Hada</NavDropdown.Item>
-            <NavDropdown.Item href="/">Desconocido</NavDropdown.Item>
-            <NavDropdown.Item href="/">Sombra</NavDropdown.Item>
+        <NavDropdown
+          id="nav-dropdown-dark-example"
+          title="Tipos"
+          menuVariant="dark"
+        >
+          <DropdownTipos categorias={categorias.results}/>
         </NavDropdown>
         </Nav>
         <form>

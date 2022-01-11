@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import ItemList from "./ItemList"
 import { Row } from "react-bootstrap";
 import {Container} from "react-bootstrap";
-
+import { useParams } from "react-router-dom"
 
 const ItemListContainer = () => {
 
@@ -10,10 +10,19 @@ const ItemListContainer = () => {
 
     const [loading, setLoading] = useState(false)
 
+    const [tienetipo, setTienetipo] = useState(false)
+
+    const { id } = useParams();
+
     useEffect(() => {
 
-        const promise = fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000');
+        const URL = id ? `https://pokeapi.co/api/v2/type/${id}` : 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100'
 
+        const promise = fetch(URL);
+
+
+
+        if(!id){
         promise
             .then((res) => res.json())
             .then((res)=>{
@@ -24,7 +33,21 @@ const ItemListContainer = () => {
                 console.error("Bien't")
             })
             .finally(() => setLoading(true))
-    }, [])
+        }else{
+        promise
+            .then((res) => res.json())
+            .then((res)=>{
+                setCatalogo(res.pokemon);
+                console.log("Tojoya")
+                setTienetipo(true)
+            })
+            .catch(() => {
+                console.error("Bien't")
+            })
+            .finally(() => setLoading(true))
+        }
+    }, [id])
+
 
     if(!loading){
         return (
@@ -37,7 +60,7 @@ const ItemListContainer = () => {
     }else{
         return (
             <Row> 
-                <ItemList catalogo={catalogo} />
+                <ItemList catalogo={catalogo} tienetipo={tienetipo} />
             </Row>
         )
     }

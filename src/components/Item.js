@@ -1,9 +1,8 @@
 import ItemCount from "./ItemCount";
 import { Card } from "react-bootstrap";
-import { Button } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { useState, useEffect } from "react"
-// import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Item({cat}){
     const [pokeimg, setPokeimg] = useState([]);
@@ -22,7 +21,7 @@ function Item({cat}){
         .catch(() => {
             console.error("Pokeinfo Mal")
         })
-    }, [])
+    }, [cat])
 
 
 
@@ -37,9 +36,8 @@ function Item({cat}){
                 
                 <ItemCount stock={pokeinfo}/>
                     <Row className="justify-content-center">
-                        <Button href="/item">Detalles</Button>
+                        <Link className="btn btn-primary" to={`item/${pokeinfo}`}>Detalles</Link>
                     </Row>
-                {/* <Link to={`/cat/${cat.id}`}>Detalles</Link> */}
             </Card.Body>
             </Card>
     )
