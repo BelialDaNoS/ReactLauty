@@ -26,7 +26,7 @@ function ItemCount({stock}) {
       <Row>
         <Col>
           <Button variant="danger" onClick={() => restar()}>
-            -
+            Quitar
           </Button>
         </Col>
         <Col>
@@ -34,7 +34,7 @@ function ItemCount({stock}) {
         </Col>
         <Col>
           <Button onClick={() => sumar()} variant="success">
-            +
+            Agregar
           </Button>
         </Col>
       </Row>

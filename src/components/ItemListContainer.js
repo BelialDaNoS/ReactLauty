@@ -16,7 +16,7 @@ const ItemListContainer = () => {
 
     useEffect(() => {
 
-        const URL = id ? `https://pokeapi.co/api/v2/type/${id}` : 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100'
+        const URL = id ? `https://pokeapi.co/api/v2/type/${id}` : 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=500'
 
         const promise = fetch(URL);
 

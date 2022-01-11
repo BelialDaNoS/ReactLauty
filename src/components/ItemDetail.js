@@ -2,6 +2,7 @@ import { Container, Card } from "react-bootstrap";
 import Types from "./Types";
 import Abilities from "./Abilities";
 import { Link } from "react-router-dom";
+import ItemCount from "./ItemCount";
 
 function ItemDetail ({product, pokeimg}) {
 
@@ -13,10 +14,9 @@ const flecha = "<--"
     return (
         <Container>
         <Card className="text-center">
-
             <Card.Header>
                 <Link className="btn btn-primary" to={`/`}>{flecha}</Link>
-                <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>id:{product.id}</h6>
+                <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Stock:{product.id}</h6>
             </Card.Header>
             <Card.Body>
                 <Card.Title><img src={pokeimg} style={{width:'200px', height:'200px'}}/></Card.Title>
@@ -24,7 +24,7 @@ const flecha = "<--"
                     <Card.Title className="border">Peso: {product.weight} (En hectogramos, no sé como poner una coma antes del último número xd)</Card.Title> 
                     <Card.Title className="border border-danger">Ataques:{<Abilities habilidades={product.abilities}/>}</Card.Title> 
             </Card.Body>
-            <Card.Footer className="text-muted"></Card.Footer>
+            <Card.Footer><ItemCount stock={product.id}/></Card.Footer>
         </Card>
         </Container>
         )

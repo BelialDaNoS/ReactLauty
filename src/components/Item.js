@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
+import DeIdAPrecio from "./DeIdAPrecio";
 
 function Item({cat}){
     const [pokeimg, setPokeimg] = useState([]);
@@ -26,10 +27,10 @@ function Item({cat}){
 
 
     return(
-            <Card style={{ width: '18rem', margin: '30px' }}>
+            <Card style={{ width: '20rem', margin: '20px' }}>
             <Card.Body>
                 <Card.Title style={{textTransform:"capitalize"}}> {cat.name} </Card.Title>
-                <Card.Subtitle className="mb-2 text-muted"> id: {pokeinfo} </Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted"> Stock: {pokeinfo}   Precio: $<DeIdAPrecio id={pokeinfo}/>   </Card.Subtitle>
                 <Card.Text>
                     <img src={pokeimg.front_default} style={{width:'200px', height:'200px'}}/>
                 </Card.Text>
