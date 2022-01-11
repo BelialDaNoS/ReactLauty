@@ -21,7 +21,7 @@ function Item({cat}){
         .catch(() => {
             console.error("Pokeinfo Mal")
         })
-    }, [cat])
+    }, [pokeimg])
 
 
 

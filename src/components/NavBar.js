@@ -12,7 +12,7 @@ function NavBar() {
   useEffect(() => {
 
     
-    const tipos = fetch('https://pokeapi.co/api/v2/type');
+    const tipos = fetch('https://pokeapi.co/api/v2/type?limit=18/');
 
     tipos
         .then((res) => res.json())
