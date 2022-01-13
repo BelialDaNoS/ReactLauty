@@ -27,7 +27,7 @@ function NavBar() {
 
 
     return (
-      <Navbar variant="dark" bg="dark" expand="sm">
+      <Navbar variant="dark" bg="dark" expand="sm" fixed="top" style={{height:"70px"}}>
       <Container fluid>
       <Navbar.Brand href="/"><h3>PokeCoder</h3></Navbar.Brand>
       <Navbar.Toggle aria-controls="navbar-dark-example" />

@@ -27,8 +27,11 @@ const ItemDetailContainer = () => {
             .catch(() => {console.error("Pokeinfo Mal")})
     }, [id])
 
+
+
+
         return (
-                <ItemDetail product={product} pokeimg={pokeimg} />
+                <ItemDetail product={product} pokeimg={pokeimg}/>
 
         )
     

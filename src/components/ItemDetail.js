@@ -11,8 +11,14 @@ const pokenombre = product.name;
 const typee = product.types;
 
 const flecha = "<--"
+
+function onAdd (count){
+    console.log(`Agregaste ${pokenombre} Cantidad:${count}`)
+}
+
+
     return (
-        <Container>
+        <Container className="pt-5">
         <Card className="text-center">
             <Card.Header>
                 <Link className="btn btn-primary" to={`/`}>{flecha}</Link>
@@ -24,7 +30,7 @@ const flecha = "<--"
                     <Card.Title className="border">Peso: {product.weight} (En hectogramos, no sé como poner una coma antes del último número xd)</Card.Title> 
                     <Card.Title className="border border-danger">Ataques:{<Abilities habilidades={product.abilities}/>}</Card.Title> 
             </Card.Body>
-            <Card.Footer><ItemCount stock={product.id}/></Card.Footer>
+            <Card.Footer><ItemCount stock={product.id} initial={0} onAdd={onAdd}/></Card.Footer>
         </Card>
         </Container>
         )

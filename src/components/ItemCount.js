@@ -4,8 +4,8 @@ import { Row } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
 
-function ItemCount({stock}) {
-  const [cantidad, setCount] = useState(0);
+function ItemCount({stock,initial,onAdd}) {
+  const [cantidad, setCount] = useState(initial);
 
   const sumar = () =>{
     if(cantidad<stock){
@@ -19,7 +19,7 @@ function ItemCount({stock}) {
     }
   }
 
-
+  // onAdd(cantidad)
 
   return (
     <Container>
@@ -33,10 +33,13 @@ function ItemCount({stock}) {
           <p>{cantidad}</p>
         </Col>
         <Col>
-          <Button onClick={() => sumar()} variant="success">
+          <Button variant="success" onClick={() =>sumar()} >
             Agregar
           </Button>
         </Col>
+        <Button variant="success" onClick={() =>onAdd(cantidad)}>
+          Agregar Al Carrito
+        </Button>
       </Row>
     </Container>
 

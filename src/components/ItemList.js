@@ -1,7 +1,7 @@
 import Item from "./Item";
 import { Row } from "react-bootstrap";
 
-    const ItemList = ({catalogo, tienetipo}) => {
+    const ItemList = ({catalogo, tienetipo, initial}) => {
 
         if(!tienetipo){
             console.log(tienetipo)

@@ -5,7 +5,7 @@ const CartWidget = ({compra}) => {
   return (
 
         <div className="d-flex justify-content-end">
-          <h4 className="row text-white">{compra}</h4>
+          <h4 className="row text-white align-content-start">{compra}</h4>
           <img src={carro} className="row"/>
         </div>
   )

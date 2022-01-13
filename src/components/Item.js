@@ -9,6 +9,9 @@ function Item({cat}){
     const [pokeimg, setPokeimg] = useState([]);
     const [pokeinfo, setPokeinfo] = useState([]);
 
+    
+
+
     useEffect(() => {
 
     const promesa = fetch(`https://pokeapi.co/api/v2/pokemon/${cat.name}`);
@@ -25,17 +28,21 @@ function Item({cat}){
     }, [pokeimg])
 
 
+        function onAdd (count){
+            console.log(`Agregaste ${cat.name} Cantidad:${count}`)
+        }
+
 
     return(
-            <Card style={{ width: '20rem', margin: '20px' }}>
+            <Card style={{ width: '20rem', margin: '10px' }}>
             <Card.Body>
                 <Card.Title style={{textTransform:"capitalize"}}> {cat.name} </Card.Title>
                 <Card.Subtitle className="mb-2 text-muted"> Stock: {pokeinfo}   Precio: $<DeIdAPrecio id={pokeinfo}/>   </Card.Subtitle>
                 <Card.Text>
                     <img src={pokeimg.front_default} style={{width:'200px', height:'200px'}}/>
                 </Card.Text>
-                <ItemCount stock={pokeinfo}/>
-                    <Row className="justify-content-center">
+                <ItemCount stock={pokeinfo} initial={0} onAdd={onAdd}/>
+                    <Row className="justify-content-center" >
                         <Link className="btn btn-primary" to={`/item/${pokeinfo}`}>Detalles</Link>
                     </Row>
             </Card.Body>

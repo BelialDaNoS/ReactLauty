@@ -4,7 +4,7 @@ import { Row } from "react-bootstrap";
 import {Container} from "react-bootstrap";
 import { useParams } from "react-router-dom"
 
-const ItemListContainer = () => {
+const ItemListContainer = ({}) => {
 
     const [catalogo, setCatalogo] = useState([]);
 
@@ -16,7 +16,7 @@ const ItemListContainer = () => {
 
     useEffect(() => {
 
-        const URL = id ? `https://pokeapi.co/api/v2/type/${id}` : 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=500'
+        const URL = id ? `https://pokeapi.co/api/v2/type/${id}` : 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=200'
 
         const promise = fetch(URL);
 
@@ -59,8 +59,8 @@ const ItemListContainer = () => {
         )
     }else{
         return (
-            <Row> 
-                <ItemList catalogo={catalogo} tienetipo={tienetipo} />
+            <Row className="pt-5"> 
+                <ItemList catalogo={catalogo} tienetipo={tienetipo}/>
             </Row>
         )
     }
