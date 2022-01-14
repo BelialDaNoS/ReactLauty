@@ -37,7 +37,7 @@ function ItemCount({stock,initial,onAdd}) {
             Agregar
           </Button>
         </Col>
-        <Button variant="success" onClick={() =>onAdd(cantidad)}>
+        <Button className='mb-1' variant="success" onClick={() =>onAdd(cantidad)}>
           Agregar Al Carrito
         </Button>
       </Row>
