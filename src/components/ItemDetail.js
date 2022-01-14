@@ -3,8 +3,11 @@ import Types from "./Types";
 import Abilities from "./Abilities";
 import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
+import { useState } from "react";
 
 function ItemDetail ({product, pokeimg}) {
+
+    const [added,setAdded]=useState(false)
 
 const pokenombre = product.name;
 
@@ -14,6 +17,7 @@ const flecha = "<--"
 
 function onAdd (count){
     console.log(`Agregaste ${pokenombre} Cantidad:${count}`)
+    setAdded(true);
 }
 
 
@@ -30,7 +34,9 @@ function onAdd (count){
                     <Card.Title className="border">Peso: {product.weight} (En hectogramos, no sé como poner una coma antes del último número xd)</Card.Title> 
                     <Card.Title className="border border-danger">Ataques:{<Abilities habilidades={product.abilities}/>}</Card.Title> 
             </Card.Body>
-            <Card.Footer><ItemCount stock={product.id} initial={0} onAdd={onAdd}/></Card.Footer>
+            <Card.Footer>
+                {added ? <Link to={"/Cart"} className="btn btn-primary ms-2">Vamos Al Carrrrrrrito</Link> : <ItemCount stock={product.id} initial={0} onAdd={onAdd} added={added}/>}
+                </Card.Footer>
         </Card>
         </Container>
         )

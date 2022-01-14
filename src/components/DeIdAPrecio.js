@@ -22,4 +22,3 @@ function DeIdAPrecio({id}) {
 }
   
   export default DeIdAPrecio;
-  

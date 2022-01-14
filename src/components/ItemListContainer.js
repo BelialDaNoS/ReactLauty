@@ -9,7 +9,7 @@ const ItemListContainer = ({}) => {
     const [catalogo, setCatalogo] = useState([]);
 
     const [loading, setLoading] = useState(false)
-
+ 
     const [tienetipo, setTienetipo] = useState(false)
 
     const { id } = useParams();
@@ -19,8 +19,6 @@ const ItemListContainer = ({}) => {
         const URL = id ? `https://pokeapi.co/api/v2/type/${id}` : 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=200'
 
         const promise = fetch(URL);
-
-
 
         if(!id){
         promise
