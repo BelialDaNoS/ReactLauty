@@ -1,9 +1,6 @@
 import { Row } from "react-bootstrap";
 
 const Types = ({type}) =>{
-
-    console.log(type)
-
     if(type){
     return (
         <div>
@@ -13,7 +10,6 @@ const Types = ({type}) =>{
                 </Row>
             )} 
         </div>
-
     )}else{return(<div>Cargando</div>)}
 }
   export default Types;

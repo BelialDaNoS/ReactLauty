@@ -3,22 +3,25 @@ import Types from "./Types";
 import Abilities from "./Abilities";
 import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "./CartContext";
 
 function ItemDetail ({product, pokeimg}) {
 
-    const [added,setAdded]=useState(false)
+const [added,setAdded]=useState(false)
 
 const pokenombre = product.name;
 
 const typee = product.types;
 
+const {addToCart} = useContext(CartContext)
+
 const flecha = "<--"
 
-function onAdd (count){
-    console.log(`Agregaste ${pokenombre} Cantidad:${count}`)
-    setAdded(true);
-}
+    function onAdd (count){
+        addToCart(product, pokenombre , count)
+        setAdded(true);
+    }
 
 
     return (

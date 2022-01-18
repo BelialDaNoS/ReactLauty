@@ -1,7 +1,6 @@
 import { Row } from "react-bootstrap";
 
 const Abilities = ({habilidades}) =>{
-    console.log(habilidades)
     if(habilidades){
     return (
         <div>

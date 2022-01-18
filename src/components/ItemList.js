@@ -1,10 +1,9 @@
 import Item from "./Item";
 import { Row } from "react-bootstrap";
 
-    const ItemList = ({catalogo, tienetipo, initial}) => {
+    const ItemList = ({catalogo, tienetipo}) => {
 
         if(!tienetipo){
-            console.log(tienetipo)
         return (
             <Row>
                 {catalogo.map((item,index)=>
@@ -20,4 +19,4 @@ import { Row } from "react-bootstrap";
         </Row>)
         }
     }
-export default ItemList
+export default ItemList;
