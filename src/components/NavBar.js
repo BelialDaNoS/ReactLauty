@@ -2,11 +2,13 @@ import CartWidget from "./CartWidget"
 import { Container, Nav,Navbar, NavDropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import DropdownTipos from "./DropdownTipos";
+import { Link } from "react-router-dom";
 
 
 function NavBar() {
 
 
+  
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
@@ -29,7 +31,7 @@ function NavBar() {
     return (
       <Navbar variant="dark" bg="dark" expand="sm" fixed="top" style={{height:"70px"}}>
       <Container fluid>
-      <Navbar.Brand href="/"><h3>PokeCoder</h3></Navbar.Brand>
+      <Link to={"/"} style={{textDecoration:"none"}}><h3>PokeCoder</h3></Link>
       <Navbar.Toggle aria-controls="navbar-dark-example" />
       <Navbar.Collapse id="navbar-dark-example">
         <Nav>

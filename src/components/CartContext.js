@@ -7,21 +7,35 @@ export const CartContext = createContext();
 
 const CartProvider = ( {children} ) => {
 
-    const [cartArray, setCartArray] = useState([])
+    const [cartArray, setCartArray] = useState([]);
+
+    const [productCount, setProductCount] = useState(0)
+
+
+    console.log(productCount);
+
 
     const addToCart = (product, pokenombre, count) =>{
+        if(isInCart(product.id)){
+            alert("Ya agregaste uno de esos al carrito.")
+        }else{
         console.log(`Agregaste ${pokenombre} Cantidad:${count}`)
+
+        setProductCount(productCount + count);
+        
         const newItem ={
             pokenombre,
             count,
             product
-        }
+            }   
         setCartArray([...cartArray, newItem])
+        }
     }
 
     const deleteItem = (id) => {
-        const updatedCart = cartArray.filter(element => element.id !== id);
+        const updatedCart = cartArray.filter(element => element.product.id !== id);
         setCartArray(updatedCart);
+        console.log(updatedCart)
     }
 
     const clearCart = () => {
@@ -29,7 +43,7 @@ const CartProvider = ( {children} ) => {
     }
 
     const isInCart = (id) => {
-        return cartArray.some(element => element.id == id);
+        return cartArray.some(element => element.product.id === id);
     }
 
 

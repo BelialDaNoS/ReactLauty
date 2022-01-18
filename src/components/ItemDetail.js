@@ -19,8 +19,11 @@ const {addToCart} = useContext(CartContext)
 const flecha = "<--"
 
     function onAdd (count){
+        if(count!== 0){
         addToCart(product, pokenombre , count)
-        setAdded(true);
+        setAdded(true);}else{
+            alert("Como vas a comprar 0 items? ._. No se puede pa, nonono")
+        }
     }
 
 

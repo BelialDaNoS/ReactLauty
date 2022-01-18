@@ -1,10 +1,12 @@
 import React from 'react'
 import { Row, Card, Col, Button} from "react-bootstrap";
+import DeIdAPrecio from "./DeIdAPrecio";
 // nombre, cant, id
-const ItemCart = (nombre) => {
+const ItemCart = ({nombre, item, id, deleteItem}) => {
 
-    console.log(nombre.pokenombre.pokenombre)
-    
+
+    const pokeimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
+
 
     if(nombre){
     return (
@@ -12,19 +14,23 @@ const ItemCart = (nombre) => {
                 <Card.Body>
                     <Row>
                         <Col className='align-self-center'>
-                            <Card.Title>
-                                {nombre.pokenombre.pokenombre}
-                            {/* Icono del poke junto al título*/}
+                            <Card.Title style={{textTransform:"capitalize"}}>
+                                {nombre}
+                            <img src={pokeimg} alt="Imagen de un Pokemon" style={{width:'100px', height:'100px'}} className='ml-5'/>
                             </Card.Title>
                         </Col>
                         <Col className='align-self-center'>
-                            <Card.Text>
-                                Precio:
-                                Cantidad:
-                            </Card.Text>
+                            <Row>
+                                <Card.Text>
+                                    Precio: $<DeIdAPrecio id={id}/>
+                                </Card.Text>
+                                <Card.Text>
+                                    Cantidad: {item.count}
+                                </Card.Text>
+                            </Row>
                         </Col>
                         <Col className="d-flex justify-content-end" >
-                            <Button variant="danger" >
+                            <Button variant="danger" onClick={() => deleteItem(id)}>
                             <img src="/deleteicon.png" alt="" />
                             </Button>
                         </Col>

@@ -19,7 +19,6 @@ function ItemCount({stock,initial,onAdd}) {
     }
   }
 
-  // onAdd(cantidad)
 
   return (
     <Container>

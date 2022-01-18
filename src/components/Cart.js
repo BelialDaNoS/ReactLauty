@@ -5,9 +5,10 @@ import ItemCart from "./ItemCart";
 
 function Cart() {
 
-  const {cartArray} = useContext(CartContext)
+  const {cartArray, deleteItem} = useContext(CartContext);
   
   console.log(cartArray)
+
 
   if(cartArray.length == 0){
     return(
@@ -31,8 +32,8 @@ function Cart() {
     <Card>
       <Card.Body>
         <Card.Title>Carrito</Card.Title>
-        {cartArray.map((pokenombre, index)=>
-          <ItemCart key={index} nombre={pokenombre}/>
+        {cartArray.map((item)=>
+          <ItemCart key={item.product.id} item={item} nombre={item.pokenombre} id={item.product.id} deleteItem={deleteItem}/>
         )}
       </Card.Body>
     </Card>
