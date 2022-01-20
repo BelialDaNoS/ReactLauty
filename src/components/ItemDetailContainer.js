@@ -22,7 +22,6 @@ const ItemDetailContainer = () => {
             .then((res) => res.json())
             .then((res)=>{
                 setProduct(res);
-                console.log(product)
             })
             .catch(() => {console.error("Pokeinfo Mal")})
     }, [id])

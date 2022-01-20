@@ -1,13 +1,10 @@
 import React from 'react'
 import { Row, Card, Col, Button} from "react-bootstrap";
 import DeIdAPrecio from "./DeIdAPrecio";
-// nombre, cant, id
+
 const ItemCart = ({nombre, item, id, deleteItem}) => {
-
-
     const pokeimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
-
-
+    const cantidad = item.count;
     if(nombre){
     return (
             <Card>
@@ -30,7 +27,7 @@ const ItemCart = ({nombre, item, id, deleteItem}) => {
                             </Row>
                         </Col>
                         <Col className="d-flex justify-content-end" >
-                            <Button variant="danger" onClick={() => deleteItem(id)}>
+                            <Button variant="danger" onClick={() => deleteItem(id, cantidad)}>
                             <img src="/deleteicon.png" alt="" />
                             </Button>
                         </Col>

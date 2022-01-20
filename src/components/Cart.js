@@ -4,13 +4,8 @@ import { CartContext } from "./CartContext";
 import ItemCart from "./ItemCart";
 
 function Cart() {
-
   const {cartArray, deleteItem} = useContext(CartContext);
-  
-  console.log(cartArray)
-
-
-  if(cartArray.length == 0){
+    if(cartArray.length == 0){
     return(
       <Row className="mt-5 pt-5 justify-content-center align-content-center align-middle">
       <Card>

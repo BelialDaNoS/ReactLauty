@@ -1,4 +1,3 @@
-import ItemCount from "./ItemCount";
 import { Card } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { useState, useEffect } from "react"
@@ -8,7 +7,7 @@ import DeIdAPrecio from "./DeIdAPrecio";
 function Item({cat}){
     const [pokeimg, setPokeimg] = useState([]);
     const [pokeinfo, setPokeinfo] = useState([]);
-    const [added,setAdded]=useState(false)
+
 
     useEffect(() => {
     const promesa = fetch(`https://pokeapi.co/api/v2/pokemon/${cat.name}`);
@@ -23,11 +22,6 @@ function Item({cat}){
         })
     }, [pokeimg])
 
-
-        function onAdd (count){
-            console.log(`Agregaste ${cat.name} Cantidad:${count}`);
-            setAdded(true);
-        }
 
 
     return(

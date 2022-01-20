@@ -12,9 +12,6 @@ const CartProvider = ( {children} ) => {
     const [productCount, setProductCount] = useState(0)
 
 
-    console.log(productCount);
-
-
     const addToCart = (product, pokenombre, count) =>{
         if(isInCart(product.id)){
             alert("Ya agregaste uno de esos al carrito.")
@@ -32,10 +29,10 @@ const CartProvider = ( {children} ) => {
         }
     }
 
-    const deleteItem = (id) => {
+    const deleteItem = (id, cantidad) => {
         const updatedCart = cartArray.filter(element => element.product.id !== id);
         setCartArray(updatedCart);
-        console.log(updatedCart)
+        setProductCount(productCount - cantidad);
     }
 
     const clearCart = () => {
@@ -49,6 +46,7 @@ const CartProvider = ( {children} ) => {
 
     const value = {
         cartArray,
+        productCount,
         addToCart,
         deleteItem,
         clearCart

@@ -3,13 +3,19 @@ import { Container, Nav,Navbar, NavDropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import DropdownTipos from "./DropdownTipos";
 import { Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 function NavBar() {
 
 
   
   const [categorias, setCategorias] = useState([]);
+
+  const {productCount} = useContext(CartContext);
+
+
+
 
   useEffect(() => {
 
@@ -46,7 +52,7 @@ function NavBar() {
           <input className="form-control" type="text" placeholder="Search" aria-label="Search"/>
         </form>
       </Navbar.Collapse>
-      <CartWidget compra={0} />
+      <CartWidget productCount={productCount} />
     </Container>
   </Navbar>
     );
