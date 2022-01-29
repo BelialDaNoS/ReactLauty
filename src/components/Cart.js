@@ -37,6 +37,7 @@ function Cart() {
         {cartArray.map((item)=>
           <ItemCart key={item.product.id} item={item} nombre={item.pokenombre} id={item.product.id} deleteItem={deleteItem}/>
         )}
+        {cartArray.length > 0 ? <h1 className="justify-content-end">Concretar Compra</h1> : <h1></h1>}
       </Card.Body>
     </Card>
   </Row>)
