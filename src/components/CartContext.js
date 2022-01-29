@@ -37,6 +37,7 @@ const CartProvider = ( {children} ) => {
 
     const clearCart = () => {
         setCartArray([]);
+        setProductCount(0);
     }
 
     const isInCart = (id) => {
