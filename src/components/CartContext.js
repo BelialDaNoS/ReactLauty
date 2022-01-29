@@ -49,7 +49,8 @@ const CartProvider = ( {children} ) => {
         productCount,
         addToCart,
         deleteItem,
-        clearCart
+        clearCart,
+        isInCart
     }
 
     return (

@@ -1,4 +1,4 @@
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Row, Stack } from "react-bootstrap";
 import Types from "./Types";
 import Abilities from "./Abilities";
 import { Link } from "react-router-dom";
@@ -14,17 +14,20 @@ const pokenombre = product.name;
 
 const typee = product.types;
 
-const {addToCart} = useContext(CartContext)
+const {addToCart,isInCart} = useContext(CartContext)
 
 const flecha = "<--"
 
+
     function onAdd (count){
-        if(count!== 0){
         addToCart(product, pokenombre , count)
-        setAdded(true);}else{
-            alert("Como vas a comprar 0 items? ._. No se puede pa, nonono")
-        }
+        setAdded(true)
     }
+
+
+
+
+
 
 
     return (
@@ -35,16 +38,61 @@ const flecha = "<--"
                 <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Stock:{product.id}</h6>
             </Card.Header>
             <Card.Body>
-                <Card.Title><img src={pokeimg} style={{width:'200px', height:'200px'}}/></Card.Title>
+                <Card.Title>
+                    <Stack direction="horizontal" gap={3} className="justify-content-center">
+                        <img src={pokeimg} style={{width:'200px', height:'200px'}}/>
+                        {isInCart(product.id) ? <h3> Item agregado al carrito. Si desea agregar más, su límite será de:  </h3> : <h2></h2>}
+                    </Stack>
+                </Card.Title>
                     <Card.Title className="border border-primary">Tipo:<Types type={typee} /></Card.Title>
                     <Card.Title className="border">Peso: {product.weight} (En hectogramos, no sé como poner una coma antes del último número xd)</Card.Title> 
                     <Card.Title className="border border-danger">Ataques:{<Abilities habilidades={product.abilities}/>}</Card.Title> 
             </Card.Body>
             <Card.Footer>
-                {added ? <Link to={"/Cart"} className="btn btn-primary ms-2">Vamos Al Carrrrrrrito</Link> : <ItemCount stock={product.id} initial={0} onAdd={onAdd} added={added}/>}
+                {added ? <Link to={"/Cart"} className="btn btn-primary ms-2">Vamos Al Carrrrrrrito</Link> : <ItemCount stock={product.id} initial={1} onAdd={onAdd} added={added}/>}
                 </Card.Footer>
         </Card>
         </Container>
         )
     }
 export default ItemDetail
+
+
+    // if(isInCart(product.id)){
+    // return (
+    //     <Container className="pt-5">
+    //     <Card className="text-center">
+    //         <Card.Header>
+    //             <Link className="btn btn-primary" to={`/`}>{flecha}</Link>
+    //             <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Stock:{product.id}</h6>
+    //         </Card.Header>
+    //         <Card.Body>
+    //             <Card.Title><img src={pokeimg} style={{width:'200px', height:'200px'}}/></Card.Title>
+    //                 <Card.Title className="border border-primary">Tipo:<Types type={typee} /></Card.Title>
+    //                 <Card.Title className="border">Peso: {product.weight} (En hectogramos, no sé como poner una coma antes del último número xd)</Card.Title> 
+    //                 <Card.Title className="border border-danger">Ataques:{<Abilities habilidades={product.abilities}/>}</Card.Title> 
+    //         </Card.Body>
+    //         <Card.Footer>
+    //             {added ? <Link to={"/Cart"} className="btn btn-primary ms-2">Vamos Al Carrrrrrrito</Link> : <ItemCount stock={product.id} initial={1} onAdd={onAdd} added={added}/>}
+    //             </Card.Footer>
+    //     </Card>
+    //     </Container>
+    //     )}else{
+    //         <Container className="pt-5">
+    //         <Card className="text-center">
+    //             <Card.Header>
+    //                 <Link className="btn btn-primary" to={`/`}>{flecha}</Link>
+    //                 <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Stock:{product.id}</h6>
+    //             </Card.Header>
+    //             <Card.Body>
+    //                 <Card.Title><img src={pokeimg} style={{width:'200px', height:'200px'}}/></Card.Title>
+    //                     <Card.Title className="border border-primary">Tipo:<Types type={typee} /></Card.Title>
+    //                     <Card.Title className="border">Peso: {product.weight} (En hectogramos, no sé como poner una coma antes del último número xd)</Card.Title> 
+    //                     <Card.Title className="border border-danger">Ataques:{<Abilities habilidades={product.abilities}/>}</Card.Title> 
+    //             </Card.Body>
+    //             <Card.Footer>
+    //                 {added ? <Link to={"/Cart"} className="btn btn-primary ms-2">Vamos Al Carrrrrrrito</Link> : <ItemCount stock={product.id} initial={1} onAdd={onAdd} added={added}/>}
+    //                 </Card.Footer>
+    //         </Card>
+    //         </Container>
+    //     }
