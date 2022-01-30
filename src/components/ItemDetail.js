@@ -14,7 +14,7 @@ const pokenombre = product.name;
 
 const typee = product.types;
 
-const {addToCart,isInCart,cartArray} = useContext(CartContext)
+const {addToCart,isInCart} = useContext(CartContext)
 
 const flecha = "<--"
 
@@ -31,7 +31,7 @@ const flecha = "<--"
         <Card className="text-center">
             <Card.Header>
                 <Link className="btn btn-primary" to={`/`}>{flecha}</Link>
-                <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Stock:{product.id}</h6>
+                <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Id:{product.id}</h6>
             </Card.Header>
             <Card.Body>
                 <Card.Title>

@@ -12,14 +12,15 @@ const CartProvider = ( {children} ) => {
     const [productCount, setProductCount] = useState(0)
 
 
+
     const addToCart = (product, pokenombre, count) =>{
         if(isInCart(product.id)){
-            alert("Ya agregaste uno de esos al carrito.")
+            console.log(pokenombre)
+            cartArray.find(element => element.product.id === product.id).count = cartArray.find(element => element.product.id === product.id).count + count;
+            setProductCount(productCount + count)
         }else{
         console.log(`Agregaste ${pokenombre} Cantidad:${count}`)
-
-        setProductCount(productCount + count);
-        
+        setProductCount(productCount + count)
         const newItem ={
             pokenombre,
             count,
@@ -28,6 +29,10 @@ const CartProvider = ( {children} ) => {
         setCartArray([...cartArray, newItem])
         }
     }
+
+
+    
+
 
     const deleteItem = (id, cantidad) => {
         const updatedCart = cartArray.filter(element => element.product.id !== id);
@@ -53,7 +58,6 @@ const CartProvider = ( {children} ) => {
         clearCart,
         isInCart
     }
-
     return (
         <CartContext.Provider value={value}>
             {children}

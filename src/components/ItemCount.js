@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
+import { CartContext } from "./CartContext";
 
 function ItemCount({stock,initial,onAdd}) {
   const [cantidad, setCount] = useState(initial);
+
+  const {cartArray} = useContext(CartContext)
+
+
 
   const sumar = () =>{
     if(cantidad<stock){
@@ -19,7 +24,7 @@ function ItemCount({stock,initial,onAdd}) {
     }
   }
 
-
+   
   return (
     <Container>
       <Row>
@@ -29,7 +34,7 @@ function ItemCount({stock,initial,onAdd}) {
           </Button>
         </Col>
         <Col>
-          <p>{cantidad}</p>
+          <h2>{cantidad}</h2>
         </Col>
         <Col>
           <Button variant="success" onClick={() =>sumar()} >
@@ -41,9 +46,8 @@ function ItemCount({stock,initial,onAdd}) {
         </Button>
       </Row>
     </Container>
+  )}
 
-  );
-}
 
 export default ItemCount;
 
