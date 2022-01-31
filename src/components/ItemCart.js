@@ -2,8 +2,11 @@ import React from 'react'
 import { Row, Card, Col, Button} from "react-bootstrap";
 import DeIdAPrecio from "./DeIdAPrecio";
 
+
 const ItemCart = ({nombre, item, id, deleteItem}) => {
-    const pokeimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
+    
+    const pokeimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    console.log(typeof(pokeimg))
     const cantidad = item.count;
     if(nombre){
     return (

@@ -1,51 +1,65 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 import ItemList from "./ItemList"
 import { Row } from "react-bootstrap";
 import {Container} from "react-bootstrap";
-import { useParams } from "react-router-dom"
-
+import { useParams } from "react-router-dom";
+import {db} from "./firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemListContainer = ({}) => {
 
     const [catalogo, setCatalogo] = useState([]);
 
     const [loading, setLoading] = useState(false)
- 
-    const [tienetipo, setTienetipo] = useState(false)
 
-    const { id } = useParams();
+    const { tipos } = useParams();
 
     useEffect(() => {
-
-        const URL = id ? `https://pokeapi.co/api/v2/type/${id}` : 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=200'
-
-        const promise = fetch(URL);
-
-        if(!id){
-        promise
-            .then((res) => res.json())
-            .then((res)=>{
-                setCatalogo(res.results);
-                console.log("Tojoya")
+    const coleccionProductos = collection(db, "product")
+        if(!tipos){
+            const pedido = getDocs(coleccionProductos)
+            pedido
+            .then((resultado)=>{
+                const docs = resultado.docs
+                const docs_formeateado = docs.map(doc=>{
+                    const producto ={
+                    idfirebase: doc.id,
+                    ...doc.data()
+                    }
+                    return producto
+                })
+                setCatalogo(docs_formeateado)
             })
-            .catch(() => {
-                console.error("Bien't")
+            .catch((error)=>{
+                console.error(error)
             })
             .finally(() => setLoading(true))
         }else{
-        promise
-            .then((res) => res.json())
-            .then((res)=>{
-                setCatalogo(res.pokemon);
-                console.log("Tojoya")
-                setTienetipo(true)
+            const filtro = where("categoria","==",tipos)
+            const consulta = query(coleccionProductos,filtro)
+            const pedido = getDocs(consulta)
+
+            pedido
+            .then((resultado)=>{
+
+
+                const docs = resultado.docs
+                const docs_formeateado = docs.map(doc=>{
+                    const producto ={
+                    idfirebase: doc.id,
+                    ...doc.data()
+                    }
+                    return producto
+                })
+
+                setCatalogo(docs_formeateado)
             })
-            .catch(() => {
-                console.error("Bien't")
+            .catch((error)=>{
+                console.error(error)
             })
             .finally(() => setLoading(true))
         }
-    }, [id])
+    },[tipos])
 
 
     if(!loading){
@@ -59,7 +73,7 @@ const ItemListContainer = ({}) => {
     }else{
         return (
             <Row className="pt-5"> 
-                <ItemList catalogo={catalogo} tienetipo={tienetipo}/>
+                <ItemList catalogo={catalogo}/>
             </Row>
         )
     }

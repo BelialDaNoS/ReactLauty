@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import ItemDetail from "./ItemDetail"
 import { useParams } from "react-router-dom"
-
+import {db} from "./firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
 
@@ -14,16 +15,28 @@ const ItemDetailContainer = () => {
         
     useEffect(() => {
 
-        const URL = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        const coleccionProductos = collection(db, "product")
+        const pedido = getDocs(coleccionProductos)
 
-        const detalles = fetch(URL);
+            pedido
+            .then((resultado)=>{
+                const docs = resultado.docs
+                const docs_formateado = docs.map(doc=>{
+                    const producto ={
+                    idfirebase: doc.id,
+                    ...doc.data()
+                    }
+                    return producto
+                })
+                console.log(docs_formateado)
 
-        detalles
-            .then((res) => res.json())
-            .then((res)=>{
-                setProduct(res);
+                const productfound = docs_formateado.find(element => element.id == id )
+
+                setProduct(productfound)
             })
-            .catch(() => {console.error("Pokeinfo Mal")})
+            .catch((error)=>{
+                console.error(error)
+            })
     }, [id])
 
 

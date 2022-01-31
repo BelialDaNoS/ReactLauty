@@ -7,7 +7,7 @@ const DropdownTipos = ({categorias}) =>{
             <div>
                 {categorias.map((item,index)=>
                     <NavDropdown.Item as={"span"} key={index}>
-                        <Link to={`tipos/${item.name}`} style={{textTransform:"capitalize"}}>{item.name}</Link>
+                        <Link to={`tipos/${item}`} style={{textTransform:"capitalize"}}>{item}</Link>
                     </NavDropdown.Item>
                 )} 
             </div>

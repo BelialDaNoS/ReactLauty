@@ -8,31 +8,9 @@ import { CartContext } from "./CartContext";
 
 function NavBar() {
 
-
-  
-  const [categorias, setCategorias] = useState([]);
+  const categorias = ["normal", "peleador", "electrico", "volador"];
 
   const {productCount} = useContext(CartContext);
-
-
-
-
-  useEffect(() => {
-
-    
-    const tipos = fetch('https://pokeapi.co/api/v2/type?limit=18/');
-
-    tipos
-        .then((res) => res.json())
-        .then((res)=>{
-            setCategorias(res);
-            console.log("Tojoya Navbar")
-        })
-        .catch(() => {
-            console.error("Bien't")
-        })
-}, [])
-
 
     return (
       <Navbar variant="dark" bg="dark" expand="sm" fixed="top" style={{height:"70px"}}>
@@ -45,7 +23,7 @@ function NavBar() {
           id="nav-dropdown-dark-example"
           title="Tipos"
           menuVariant="dark">
-          <DropdownTipos categorias={categorias.results}/>
+          <DropdownTipos categorias={categorias}/>
         </NavDropdown>
         </Nav>
         <form>

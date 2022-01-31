@@ -1,29 +1,19 @@
 import { Container, Card, Row, Stack } from "react-bootstrap";
-import Types from "./Types";
-import Abilities from "./Abilities";
 import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import { useState, useContext } from "react";
 import { CartContext } from "./CartContext";
 
 function ItemDetail ({product, pokeimg}) {
-
-const [added,setAdded]=useState(false)
-
-const pokenombre = product.name;
-
-const typee = product.types;
-
-const {addToCart,isInCart} = useContext(CartContext)
-
-const flecha = "<--"
-
+    const [added,setAdded]=useState(false)
+    const pokenombre = product.title;
+    const {addToCart,isInCart} = useContext(CartContext)
+    const flecha = "<--"
 
     function onAdd(count){
         addToCart(product, pokenombre , count)
         setAdded(true)
     }
-
 
 
     return (
@@ -37,12 +27,14 @@ const flecha = "<--"
                 <Card.Title>
                     <Stack direction="horizontal" gap={3} className="justify-content-center">
                         <img src={pokeimg} style={{width:'200px', height:'200px'}}/>
-                        {isInCart(product.id) ? <Row> <h3>Item agregado al carrito.</h3> </Row> : <h2></h2>}
+                        {isInCart(product.id) ? <Row> <h3>Item agregado al carrito.</h3></Row> : <h2></h2>}
                     </Stack>
                 </Card.Title>
-                    <Card.Title className="border border-primary">Tipo:<Types type={typee} /></Card.Title>
-                    <Card.Title className="border">Peso: {product.weight} (En hectogramos, no sé como poner una coma antes del último número xd)</Card.Title> 
-                    <Card.Title className="border border-danger">Ataques:{<Abilities habilidades={product.abilities}/>}</Card.Title> 
+                    <Card.Title className="border border-primary">Tipo/s:{product.categoria_2 != "" ? <Row>
+                        <h3 style={{textTransform:"capitalize"}}>{product.categoria}</h3><h3 style={{textTransform:"capitalize"}}> {product.categoria_2}</h3>
+                    </Row> : <h3 style={{textTransform:"capitalize"}}>{product.categoria}</h3> }</Card.Title>
+                    <Card.Title className="border">Peso: {product.peso} Kilogramos</Card.Title> 
+                    <Card.Title className="border border-danger">Ataque principal:<h4 style={{textTransform:"capitalize"}}>{product.ataque}</h4></Card.Title> 
             </Card.Body>
             <Card.Footer>
                 {added ? <Link to={"/Cart"} className="btn btn-primary ms-2">Vamos Al Carrrrrrrito</Link> : <ItemCount stock={product.id} initial={1} onAdd={onAdd} added={added}/>}

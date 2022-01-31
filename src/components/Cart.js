@@ -10,8 +10,6 @@ function Cart() {
   const {clearCart} = useContext(CartContext)
   const {cartArray, deleteItem} = useContext(CartContext);
 
-  const [total, setTotal] = useState(0);
-
     if(cartArray.length == 0){
     return(
       <Row className="mt-5 pt-5 justify-content-center align-content-center align-middle">
