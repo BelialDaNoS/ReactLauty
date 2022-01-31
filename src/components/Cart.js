@@ -40,7 +40,7 @@ function Cart() {
         )}
         <Row className="justify-content-end">Total:{
         cartArray.map((item)=> console.log(item.product.id))}</Row>
-        <Row  className="d-flex justify-content-end mt-2">{cartArray.length > 0 ? <Button variant="success" style={{width:"100px"}}>Concretar Compra</Button> : <h1></h1>}</Row>
+        <Row  className="d-flex justify-content-end mt-2">{cartArray.length > 0 ? <Button variant="success" style={{width:"100px"}}>Concretar Compra</Button> : null}</Row>
 
       </Card.Body>
     </Card>
