@@ -28,8 +28,6 @@ const ItemDetailContainer = () => {
                     }
                     return producto
                 })
-                console.log(docs_formateado)
-
                 const productfound = docs_formateado.find(element => element.id == id )
 
                 setProduct(productfound)

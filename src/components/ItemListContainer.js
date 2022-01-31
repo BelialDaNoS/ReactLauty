@@ -38,11 +38,8 @@ const ItemListContainer = ({}) => {
             const filtro = where("categoria","==",tipos)
             const consulta = query(coleccionProductos,filtro)
             const pedido = getDocs(consulta)
-
             pedido
             .then((resultado)=>{
-
-
                 const docs = resultado.docs
                 const docs_formeateado = docs.map(doc=>{
                     const producto ={
