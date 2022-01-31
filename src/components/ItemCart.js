@@ -1,14 +1,12 @@
 import React from 'react'
 import { Row, Card, Col, Button} from "react-bootstrap";
-import DeIdAPrecio from "./DeIdAPrecio";
+
 
 
 const ItemCart = ({nombre, item, id, deleteItem}) => {
-    
     const pokeimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-    console.log(typeof(pokeimg))
     const cantidad = item.count;
-    if(nombre){
+    if(item){
     return (
             <Card>
                 <Card.Body>
@@ -21,11 +19,14 @@ const ItemCart = ({nombre, item, id, deleteItem}) => {
                         </Col>
                         <Col className='align-self-center'>
                             <Row>
-                                <Card.Text>
-                                    Precio: $<DeIdAPrecio id={id}/>
+                            <Card.Text>
+                                    Cantidad: {item.count}
                                 </Card.Text>
                                 <Card.Text>
-                                    Cantidad: {item.count}
+                                    Precio Individual: $ {item.precioIndividual}
+                                </Card.Text>
+                                <Card.Text>
+                                    Precio total: $ {item.precioIndividual * item.count}
                                 </Card.Text>
                             </Row>
                         </Col>

@@ -9,9 +9,10 @@ function ItemDetail ({product, pokeimg}) {
     const pokenombre = product.title;
     const {addToCart,isInCart} = useContext(CartContext)
     const flecha = "<--"
+    const precioIndividual = product.precio;
 
     function onAdd(count){
-        addToCart(product, pokenombre , count)
+        addToCart(product, pokenombre , count, precioIndividual)
         setAdded(true)
     }
 
