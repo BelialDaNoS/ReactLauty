@@ -8,8 +8,6 @@ import { CartContext } from "./CartContext";
 function ItemCount({stock,initial,onAdd}) {
   const [cantidad, setCount] = useState(initial);
 
-  const {cartArray} = useContext(CartContext)
-
 
 
   const sumar = () =>{

@@ -20,6 +20,7 @@ const ItemListContainer = ({}) => {
             const pedido = getDocs(coleccionProductos)
             pedido
             .then((resultado)=>{
+
                 const docs = resultado.docs
                 const docs_formeateado = docs.map(doc=>{
                     const producto ={

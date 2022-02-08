@@ -7,9 +7,9 @@ import { CartContext } from "./CartContext";
 function ItemDetail ({product, pokeimg}) {
     const [added,setAdded]=useState(false)
     const pokenombre = product.title;
-    const {addToCart,isInCart} = useContext(CartContext)
-    const flecha = "<--"
-    const precioIndividual = product.precio;
+    const {addToCart,cartArray,isInCart} = useContext(CartContext)
+    const flecha = "<--";
+    const precioIndividual = product.precio ;
 
     function onAdd(count){
         addToCart(product, pokenombre , count, precioIndividual)
@@ -22,7 +22,7 @@ function ItemDetail ({product, pokeimg}) {
         <Card className="text-center">
             <Card.Header>
                 <Link className="btn btn-primary" to={`/`}>{flecha}</Link>
-                <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Id:{product.id}</h6>
+                <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Id:{product.id} || Stock: {product.stock} || Precio: {product.precio}$</h6>
             </Card.Header>
             <Card.Body>
                 <Card.Title>

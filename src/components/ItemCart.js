@@ -26,7 +26,7 @@ const ItemCart = ({nombre, item, id, deleteItem}) => {
                                     Precio Individual: $ {item.precioIndividual}
                                 </Card.Text>
                                 <Card.Text>
-                                    Precio total: $ {item.precioIndividual * item.count}
+                                    Precio total: $ {item.precioTotal}
                                 </Card.Text>
                             </Row>
                         </Col>

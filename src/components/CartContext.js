@@ -16,14 +16,18 @@ const CartProvider = ( {children} ) => {
     const addToCart = (product, pokenombre, count, precioIndividual) =>{
         if(isInCart(product.id)){
             cartArray.find(element => element.product.id === product.id).count = cartArray.find(element => element.product.id === product.id).count + count;
+            const precioAgregar = precioIndividual * cartArray.find(element => element.product.id === product.id).count;
+            cartArray.find(element => element.product.id === product.id).precioTotal = precioAgregar;
             setProductCount(productCount + count)
         }else{
         console.log(`Agregaste ${pokenombre} Cantidad:${count}`)
         setProductCount(productCount + count)
+        const precioTotal = precioIndividual * count;
         const newItem ={
             pokenombre,
             count,
             product,
+            precioTotal,
             precioIndividual
             }   
         setCartArray([...cartArray, newItem])

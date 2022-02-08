@@ -1,4 +1,4 @@
-import { Row, Card, Col, Stack, Button, Offcanvas, Form } from "react-bootstrap";
+import { Row, Card, Col, Stack, Button, Offcanvas, Form, Modal } from "react-bootstrap";
 import { useContext, useState } from "react";
 import { CartContext } from "./CartContext";
 import ItemCart from "./ItemCart";
@@ -10,40 +10,39 @@ import { collection, addDoc } from "firebase/firestore";
 
 function Cart() {
   const {cartArray, deleteItem, clearCart, productCount} = useContext(CartContext);
-  // const [precio,setPrecio]=useState();
-
-
-
-
-  const crearOrden = () => {
-    const coleccionProductos = collection(db, "productosLlevados")
-
-    const usuario ={
-      nomre: prompt("Ingrese su Nombre"),
-      email: prompt("Ingrese su correo"),
-      ubicacion: prompt("Ingrese la ubicación de la entrega"),
-      telefono: prompt("Ingrese su número de  teléfono")
-    }
-
-    const orden ={
-      usuario,
-      infoCarrito: cartArray,
-      total_llevado: productCount
-    }
-
-    const pedido = addDoc(coleccionProductos, orden)
-    
-    pedido
-      .then((resultado)=>{
-        console.log(resultado)
-      })
-      .catch((error)=>console.log(error))
-  }
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+      
+  console.log(cartArray)
 
+  const nombre = document.getElementById("formBasicNombre")
+  if(nombre){
+    console.log(nombre)
+  }
+
+    const crearOrden = () => {
+      const coleccionProductos = collection(db, "productosLlevados")
+      const usuario ={
+        nomre: document.getElementById(""),
+        email: prompt("Ingrese su correo"),
+        ubicacion: prompt("Ingrese la ubicación de la entrega"),
+        telefono: prompt("Ingrese su número de  teléfono")
+      }
+
+      const orden ={
+        usuario,
+        infoCarrito: cartArray,
+        total_llevado: productCount
+      }
+
+      const pedido = addDoc(coleccionProductos, orden)
+      pedido
+        .then((resultado)=>{
+          console.log(resultado.id)
+        })
+        .catch((error)=>console.log(error))
+    }
   
     if(cartArray.length == 0){
     return(
@@ -62,9 +61,11 @@ function Cart() {
       </Card>
     </Row>
     )
-  }else{
-    // cartArray.map((item) => 
-    //   setPrecio(precio+item.precioIndividual))
+    }else{
+
+    const total = cartArray.reduce(function (a, b) {
+      return {precioFinal: a.precioTotal + b.precioTotal};})
+
     return(
     <Row className="mt-5 pt-5 justify-content-center align-content-center align-middle">
       <Card>
@@ -76,50 +77,68 @@ function Cart() {
           {cartArray.map((item)=>
             <ItemCart key={item.product.id} item={item} nombre={item.pokenombre} id={item.product.id} deleteItem={deleteItem}/>
           )}
-          <Row className="justify-content-end">Total:$ {}</Row>
-          <Row  className="d-flex justify-content-end mt-2">{cartArray.length > 0 ? <Button variant="success" style={{width:"100px"}} onClick={handleShow, crearOrden}>Concretar Compra</Button> : null}</Row>
+          <Row className="justify-content-end">Total:$ {cartArray.length > 1 ? <>{total.precioFinal}</> : <>{cartArray[0].precioTotal}</> }</Row>
+          <Row  className="d-flex justify-content-end mt-2">{cartArray.length > 0 ? <Button variant="success" style={{width:"100px"}} onClick={handleShow}>Concretar Compra</Button> : null}</Row>
+
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>La mejor Pokeinversión</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+
+
+              <Form>
+              <Form.Group className="mb-3" controlId="formBasicNombre">
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control type="text" placeholder="Ingrese su Nombre o apodo" />
+                <Form.Text className="text-muted">
+
+                </Form.Text>
+              </Form.Group>
+
+
+
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Correo</Form.Label>
+                <Form.Control type="email" placeholder="Ingrese su email" />
+                <Form.Text className="text-muted">
+                  No le avisaremos al, ni somos el equipo Rocket.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formDireccion">
+                <Form.Label>Dirección</Form.Label>
+                <Form.Control type="text" placeholder="Ingrese donde quiere la entrega" />
+            </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Su contraseña</Form.Label>
+                <Form.Control type="password" placeholder="Contraseña" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label="Recordarme" />
+              </Form.Group>
+            </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cancelar
+              </Button>
+              <Button variant="primary" onClick={()=>{
+              console.log("Compra finalizada")
+              handleClose()
+              // window.location.reload()
+              }}>
+                Comprar
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
+      
         </Card.Body>
       </Card>
-
-
-
-
-
-
-
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Datos del Usuario (Solo para facha, en realidad no anda jeje)</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <Form>                
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Correo</Form.Label>
-              <Form.Control type="email" placeholder="Ingrese su email" />
-              <Form.Text className="text-muted">
-                No le avisaremos al, ni somos el equipo Rocket.
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formDireccion">
-              <Form.Label>Dirección</Form.Label>
-              <Form.Control type="email" placeholder="Ingrese donde quiere la entrega" />
-          </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Su contraseña</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Recordarme" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </Offcanvas.Body>
-      </Offcanvas>
-    </Row>)
+    </Row>
+    )
   }
 }
-  export default Cart;
 
-
+export default Cart;
