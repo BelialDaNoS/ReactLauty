@@ -1,5 +1,5 @@
 import { Row, Card, Col, Stack, Button, Offcanvas, Form, Modal } from "react-bootstrap";
-import { useContext, useState } from "react";
+import { useContext, useState, React } from "react";
 import { CartContext } from "./CartContext";
 import ItemCart from "./ItemCart";
 import {db} from "./firebase";
@@ -13,18 +13,16 @@ function Cart() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-      
-  console.log(cartArray)
+  const [nomreInput, setNombreInput] = useState("");
 
-  const nombre = document.getElementById("formBasicNombre")
-  if(nombre){
-    console.log(nombre)
-  }
+
+
+
 
     const crearOrden = () => {
       const coleccionProductos = collection(db, "productosLlevados")
       const usuario ={
-        nomre: document.getElementById(""),
+        nombre: prompt(""),
         email: prompt("Ingrese su correo"),
         ubicacion: prompt("Ingrese la ubicación de la entrega"),
         telefono: prompt("Ingrese su número de  teléfono")
@@ -88,10 +86,11 @@ function Cart() {
             <Modal.Body>
 
 
-              <Form>
-              <Form.Group className="mb-3" controlId="formBasicNombre">
+
+              {/* <Form>
+              <Form.Group className="mb-3" controlId="formBasicNombre" >
                 <Form.Label>Nombre</Form.Label>
-                <Form.Control type="text" placeholder="Ingrese su Nombre o apodo" />
+                <Form.Control type="text" placeholder="Ingrese su Nombre o apodo"/>
                 <Form.Text className="text-muted">
 
                 </Form.Text>
@@ -117,14 +116,19 @@ function Cart() {
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Recordarme" />
               </Form.Group>
-            </Form>
+            </Form> */}
+
+            
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
                 Cancelar
               </Button>
               <Button variant="primary" onClick={()=>{
+
               console.log("Compra finalizada")
+              console.log(nomreInput)
+
               handleClose()
               // window.location.reload()
               }}>
@@ -138,6 +142,7 @@ function Cart() {
       </Card>
     </Row>
     )
+    
   }
 }
 
