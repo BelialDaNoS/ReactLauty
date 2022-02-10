@@ -16,13 +16,12 @@ function ItemDetail ({product, pokeimg}) {
         setAdded(true)
     }
 
-
     return (
         <Container className="pt-5">
         <Card className="text-center">
             <Card.Header>
                 <Link className="btn btn-primary" to={`/`}>{flecha}</Link>
-                <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Id:{product.id} || Stock: {product.stock} || Precio: {product.precio}$</h6>
+                <h1 style={{textTransform:"capitalize"}}>{pokenombre}</h1><h6>Id:{product.id} || Precio: {product.precio}$</h6>
             </Card.Header>
             <Card.Body>
                 <Card.Title>
